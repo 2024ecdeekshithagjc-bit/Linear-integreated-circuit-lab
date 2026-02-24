@@ -225,52 +225,64 @@ Thus, the Q-point is successfully fixed near mid-supply.
 
 To determine the operating point:
 
-```
-.op
-.dc
-```
+we have used (.op) and (.dc)
+### DC PARAMETER VARIATION STUDY :
 
-The value of RD was adjusted to achieve:
+### (a) Effect of Varying RD (For Fixed W/L)
 
-```
-VDS ≈ VDD / 2
-```
+The width and length of the transistor were kept constant (W = 3.92 µm, L = 180 nm).  
+The drain resistor RD was varied to observe its effect on the Q-point.
 
----
+Observation:
 
-###  Power Constraint Adjustment
+- if we icrease the RD then the voltage drop across the RD .As the RD increase ,VDS  going to be decreases .
+- Drain current slightly reduces for larger RD values.
+-it is very important to select the  Proper RD value to maintain VDS ≈ VDD/2.
 
-The drain resistor (RD) and W/L ratio were tuned to obtain the required drain current while satisfying:
+Thus, RD ≈ 5 kΩ was selected to obtain VDS ≈ 1V.
 
-```
-P ≤ 1.2 mW
-```
-The image shown below is the design of CS amplifier using TSMC 180nm technology library .LT spice is used to analyze the operating point,gain,and output characterstics.
+### DC Sweep Result
 
-![Image description](https://github.com/2024ecdeekshithagjc-bit/Linear-integreated-circuit-lab/blob/main/operating%20point.png?raw=true)
----
-initially we have W = 1.11um that we have found before for that width we will be getting the value of current nearly equal to 150mA that is lessen than 200mA so in order to fix Id nearly equal to 200mA we should increase the width of the channnel because we know that width is directly propotional to the Id.if we increase the width then automatically current will increase so,
-in the above image, we have got the value I(R1) = 0.000201416A for the width W = 3.92um
+The DC sweep of input voltage was performed from 0 V to 2V to observe variation in supply current and verify the power constraint.
 
-### Transient Analysis
+![Image description](https://github.com/2024ecdeekshithagjc-bit/Linear-integreated-circuit-lab/blob/main/dc_sweep.png?raw=true)
+ ### DC Transfer Characterstics of common souurce Amplifier
+ 1. Cut-off Region (Low Vin)
+When the input voltage is very small, the MOSFET is OFF.So there no drain current flows, and the output voltage remains at the supply voltage (around 2V).
+This region is called the cut-off region.
+condition for cutt-off region:
+VGS<VTh
+ 2. Saturation Region (Amplifier Region)
+As input voltage( Vin) increases, the MOSFET starts conducting and enters the saturation region.Here, a small change in input voltage causes a large change in output voltage.
+This is the amplifier operating region, where voltage gain is maximum. This sloping part of the curve shows amplification.
+ 4. Triode (Linear) Region
+When Vin increases further, the MOSFET enters the triode region.The transistor becomes strongly ON, and the output voltage drops close to zero.
+In this region, the device behaves like a resistor and no amplification occurs.
 
-To observe time-domain behavior:
+In simple way i can say above image is the DC transfer characteristic of a CS amplifier. It shows cut-off, saturation, and triode regions. The middle saturation region is used for amplification, and the graph confirms proper MOSFET operation.
 
-```
+## TRANSIENT ANALYSIS :
+
+Transient simulation was performed using:
+
 .tran 5m
-```
 
-Input signal used:
+A sine input of SINE(0.9 10m 1k) was applied at the gate terminal.
 
-```
-SINE(0.9 10m 1k)
-```
+### Output Waveform (Vout)
 
-To obtain gain and bandwidth:
+![Image description](https://github.com/2024ecdeekshithagjc-bit/Linear-integreated-circuit-lab/blob/main/Vout_transient.png?raw=true)
 
-```
-.ac dec 10 0.1 100G
+This figure shows the transient output waveform of the common source amplifier. A sinusoidal input signal is applied to the gate, and the output voltage is observed at the drain. The output waveform is sinusoidal and centered around the bias voltage, which indicates that the MOSFET is operating in saturation region and the amplifier is working correctly.
+
+### Output Waveform (Vout)
+
+![Output Waveform](vout_transient.png)
+
+### Combined Input and Output Waveforms
+
+![Transient Combined Vin and Vout](Transient_Vin_Vout.png)
 
 
-- 180nm TSMC Model (tsmc018.lib)
+
 - 
