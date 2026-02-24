@@ -275,13 +275,142 @@ A sine input of SINE(0.9 10m 1k) was applied at the gate terminal.
 
 This figure shows the transient output waveform of the common source amplifier. A sinusoidal input signal is applied to the gate, and the output voltage is observed at the drain. The output waveform is sinusoidal and centered around the bias voltage, which indicates that the MOSFET is operating in saturation region and the amplifier is working correctly.
 
-### Output Waveform (Vout)
+### Combination Output and input Waveform :
 
-![Output Waveform](vout_transient.png)
+![Image description](https://github.com/2024ecdeekshithagjc-bit/Linear-integreated-circuit-lab/blob/main/Vin_transient.png?raw=true)
 
-### Combined Input and Output Waveforms
+In this graph, the blue waveform represents the input voltage Vin and the green waveform represents the output voltage Vout.
+We can see that the output signal has a larger amplitude compared to the input signal, which shows that the circuit is amplifying the signal.
+Also, the output waveform is inverted with respect to the input waveform, meaning when input increases, output decreases. This phase inversion is typical for a common-source MOSFET amplifier.
 
-![Transient Combined Vin and Vout](Transient_Vin_Vout.png)
+### Transient Analysis – Theoretical Observation
+### a. calculation of Vin(p-p) and Vout(p-p) in Transient analysis:
+for Vout lowest peak voltage value is 0.957V and highest peak voltage value is 1.03V.
+Therefore Vout(p-p)=1.03-0.957 = 0.073V
+for Vin lowest peak voltage value is 0.89V and highest peak voltage value is 0.9106V.
+therefore Vin(p-p) = 0.9106-0.89 = 0.0206V
+
+
+The transient response of the Common Source amplifier confirms its expected theoretical behavior.
+
+The output waveform is observed to be inverted with respect to the input signal, indicating an approximate 180° phase shift. This phase inversion is a fundamental characteristic of the Common Source configuration.
+
+The measured peak input signal variation is approximately:
+
+Vin(peak) ≈ 0.0206V  
+
+The corresponding peak output voltage is approximately:
+
+Vout(peak) ≈ 0.073 V  
+
+Hence, the voltage gain of the amplifier is:
+
+Av ≈ Vout / Vin ≈ 2.8076 V/V 
+
+The significant amplification of the input signal verifies proper small-signal operation.
+
+Additionally, the waveform shape remains undistorted, confirming that the MOSFET operates in the saturation region throughout the signal swing. This indicates that the Q-point is correctly chosen and biasing is appropriate.
+
+Therefore, the transient analysis validates correct biasing, saturation region operation, and effective voltage amplification of the Common Source amplifier.
+
+### Gain Calculation (From Transient Analysis)
+
+From the transient waveform:
+
+Voltage Gain (Av) = Vout / Vin  
+
+Peak-to-peak values were measured from the graph.
+
+Output voltage:
+
+Vout(max) = 1.03V  
+Vout(min) = 0.957V  
+
+Vout(pp) = 1.03-0.957
+Vout(pp) = 0.073V  
+
+Input voltage:
+
+Vin(max) = 0.9106V  
+Vin(min) = 0.89V  
+
+Vin(pp) = 0.9106-0.89 
+Vin(pp) = 0.0206V  
+
+Therefore,
+Av = Vout(pp) / Vin(pp)  
+
+Av = 0.073 / 0.0206  
+Av ≈ 2.8077 V/V 
+
+Gain in dB:
+
+Av(dB) = 20 log(Av)  
+
+Av(dB) = 20 log(2.8077)  
+Av(dB) ≈ 8.966 dB
+
+### Theoretical Gain Calculation
+
+For a Common Source amplifier:
+
+Av = gm × RD  
+gm = 2ID / (VGS − Vth)
+
+Given:
+
+ID = 0.2 mA  
+VGS = 0.9 V  
+Vth = 0.366 V  
+RD = 5 kΩ  
+
+Overdrive voltage:
+
+Vov = VGS − Vth = 0.9 − 0.366 = 0.534 V  
+
+Transconductance:
+
+gm = (2 × 0.2× 10⁻³) / 0.534  
+gm ≈ 7.40 mS  
+
+Therefore,
+
+Av = gm × RD  
+Av = (7.40 × 10⁻³) × (5k)  
+Av ≈   3.7 V/V
+
+Gain in dB:
+Av(dB) = 20 log(3.7)  
+Av(dB) ≈ 11.364 dB  
+
+The simulated gain (3.7) is lower than the theoretical value due to channel length modulation, output resistance effects, and other non-ideal device characteristics.
+## AC ANALYSIS  with capacitor: 
+
+![Image description](https://github.com/2024ecdeekshithagjc-bit/Linear-integreated-circuit-lab/blob/main/AC_without_cl.png?raw=true)
+
+  For AC  analysis weshould use (.ac dec 10 0.1 100G)
+
+The frequency response was obtained to determine gain and bandwidth.
+
+### Observations
+
+- The amplifier shows constant gain in the midband region.
+- At higher frequencies, gain decreases due to parasitic capacitances.
+- The presence of load capacitor (CL = 10 pF) reduces the bandwidth.
+
+### Extracted Parameters
+
+From AC plot (with CL = 10pF):
+
+- Midband gain ≈ 2.8076 nearly 3
+- Gain in dB ≈ 8.48dB
+- 3 dB bandwidth ≈ 34.276 GHz
+- Unity Gain Bandwidth (UGB) ≈ 150.23 MHz
+- GBP ≈ 11.36 × 34.276 GHz
+     ≈ 381.42GHz (approx)
+  
+
+
 
 
 
