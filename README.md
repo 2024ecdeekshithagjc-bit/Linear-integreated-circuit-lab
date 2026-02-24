@@ -405,10 +405,56 @@ From AC plot (with CL = 10pF):
 - Midband gain ≈ 2.8076 nearly 3
 - Gain in dB ≈ 8.48dB
 - 3 dB bandwidth ≈ 34.276 GHz
-- Unity Gain Bandwidth (UGB) ≈ 150.23 MHz
 - GBP ≈ 11.36 × 34.276 GHz
      ≈ 381.42GHz (approx)
-  
+ From the AC frequency response analysis of the MOSFET common-source amplifier, it is observed that the amplifier provides a constant gain in the midband region, indicating stable amplification for low and medium frequencies.
+At higher frequencies, the gain starts to decrease, which is mainly due to parasitic capacitances and the load capacitor (CL = 10 pF). These capacitances introduce poles in the circuit and reduce the bandwidth of the amplifier.
+The extracted results show that the midband gain is approximately 2.8 (about 8.48 dB), and the 3 dB bandwidth is around 34.27 GHz. The unity gain bandwidth (UGB) is about 150 MHz, and the gain-bandwidth product (GBP) is approximately 381 GHz, which confirms the high-speed performance of the amplifier.
+Overall, the amplifier shows good midband gain and very high bandwidth, but the bandwidth is limited at high frequencies due to capacitive effects. This behavior is typical for CMOS amplifiers in deep-submicron technology like 180 nm.
+### AC Analysis without capacitor:
+![Image description](https://github.com/2024ecdeekshithagjc-bit/Linear-integreated-circuit-lab/blob/main/Ac_with_cl.png?raw=true)
+
+From AC plot (with CL = 10pF):
+
+- Midband gain ≈ 2.8076 nearly 3
+- Gain in dB ≈ 8.48dB
+- 3 dB bandwidth ≈ 33.28 GHz
+- GBP ≈ 11.4 × 33.28 GHz
+     ≈ 379.392GHz (approx)
+  The AC frequency response of the common-source MOSFET amplifier shows that the amplifier provides a stable and constant gain in the midband frequency range. This means the circuit amplifies the input signal properly without distortion at low and medium frequencies.
+As the frequency increases beyond the midband region, the gain starts to drop gradually, and at very high frequencies it falls sharply. This reduction in gain is mainly due to parasitic capacitances of the MOSFET and the load capacitor, which introduce high-frequency poles and limit the bandwidth of the amplifier.
+From the extracted results, the midband gain is approximately 2.8 (about 8.48 dB), and the 3 dB bandwidth is around 33–34 GHz, which indicates that the amplifier is suitable for high-speed applications. The unity gain bandwidth (UGB) and gain-bandwidth product (GBP) further confirm the high-frequency performance of the design.
+Overall, the amplifier exhibits good gain in the midband region and wide bandwidth, but its gain decreases at high frequencies due to capacitive effects, which is a typical behavior of CMOS amplifiers in 180 nm technology.
+
+ ## Conclusion and Discussion
+
+The Common Source amplifier was implemented using 180 nm NMOS technology while ensuring that the total power dissipation remained within the specified limit of 1.2mW. The design process focused on establishing a stable and optimal operating point for reliable amplification.
+
+The biasing condition was selected such that:
+
+VDS ≈ VDD / 2 ≈ 1 V
+
+Positioning the Q-point near the midpoint of the supply voltage allowed maximum symmetrical signal swing and ensured that the MOSFET remained in the saturation region during operation.
+
+The theoretical drain current was calculated to be approximately:
+
+ID ≈ 0.2 mA
+
+Simulation results showed a very close value of about 0.2 mA, indicating strong agreement between analytical calculations and practical implementation.
+
+Time-domain (transient) analysis verified that the amplifier provides voltage amplification along with the expected 180° phase reversal between input and output signals.
+
+The observed voltage gain was:
+
+Av ≈ 2.807 (≈ 11.4 dB)
+
+This value is slightly lower than the ideal small-signal gain due to practical non-idealities such as channel length modulation and other second-order effects inherent in real MOS devices.
+
+Frequency response analysis indicated a midband gain of approximately 2.807 with a 3 dB bandwidth around 34.276GHz.
+
+When a load capacitance of 10 pF was connected at the output, the bandwidth decreased because of the increased capacitive loading effect. However, the midband gain remained nearly constant.
+
+In summary, the theoretical analysis, DC biasing calculations, transient behavior, and AC frequency response are in close agreement. This confirms the correctness of the design methodology and the expected performance of the Common Source amplifier. 
 
 
 
